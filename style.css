@@ -1,0 +1,271 @@
+﻿/* =========================================
+   1. VARIABLES & BASE
+   ========================================= */
+:root {
+    --bg-dark: #020617;
+    --bg-card: #0f172a;
+    --bg-input: #020617;
+    --accent: #06b6d4; /* Cyan ElectroInfo */
+    --text-high: #ffffff;
+    --text-read: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border: #1e293b;
+    --danger: #ef4444;
+    --success: #10b981;
+    --radius: 12px;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html, body {
+    width: 100%;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: scroll !important; /* Force le scroll vertical */
+    overflow-x: hidden !important;
+    scroll-behavior: smooth;
+    background-color: var(--bg-dark);
+    color: var(--text-read);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hidden { display: none !important; }
+
+/* =========================================
+   2. NAVBAR & MENU COULISSANT (ÇA)
+   ========================================= */
+.navbar {
+    position: fixed; 
+    top: 0; left: 0; width: 100%;
+    background: rgba(2, 6, 23, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.logo img {
+    height: 45px;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+
+.menu-btn { 
+    background: none; 
+    border: none; 
+    color: white; 
+    font-size: 1.8rem; 
+    cursor: pointer; 
+}
+
+/* Animation "ça" */
+.slide-menu {
+    position: fixed; 
+    top: 0; 
+    right: -320px; 
+    width: 300px; 
+    height: 100vh;
+    background: var(--bg-card); 
+    z-index: 2000; 
+    padding: 40px 25px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    border-left: 1px solid var(--border);
+}
+
+.slide-menu.active { 
+    transform: translateX(-320px); 
+}
+
+.overlay {
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.7);
+    display: none; 
+    z-index: 1500; 
+    backdrop-filter: blur(4px);
+}
+
+.overlay.active { display: block; }
+
+.slide-menu h3 {
+    color: var(--accent);
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+}
+
+.slide-menu a {
+    display: block; 
+    color: var(--text-read); 
+    font-size: 1.1rem;
+    padding: 12px 0; 
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.slide-menu a:hover {
+    color: var(--accent);
+    padding-left: 10px;
+}
+
+.close-btn {
+    background: none; border: none; color: white;
+    font-size: 1.5rem; cursor: pointer; margin-bottom: 20px;
+}
+
+/* =========================================
+   3. GRILLE D'ACCUEIL & FILTRES
+   ========================================= */
+.filters-section { margin: 100px 0 40px; text-align: center; }
+
+#searchInput {
+    width: 100%; max-width: 600px; padding: 15px 25px;
+    background: var(--bg-input); border: 1px solid var(--border);
+    border-radius: 30px; color: white; font-size: 1.1rem; outline: none;
+}
+
+.filter-btn {
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text-muted); padding: 8px 18px; border-radius: 20px;
+    cursor: pointer; transition: 0.3s;
+}
+
+.filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+.articles-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px; padding-bottom: 50px;
+}
+
+.card {
+    background: var(--bg-card); border-radius: var(--radius);
+    border: 1px solid var(--border); overflow: hidden;
+    transition: 0.3s; cursor: pointer; display: flex; flex-direction: column;
+}
+
+.card:hover { transform: translateY(-5px); border-color: var(--accent); }
+.card-image img { width: 100%; height: 200px; object-fit: cover; }
+.card-content { padding: 20px; }
+.card-content h3 { color: var(--text-high); margin: 10px 0; }
+
+/* =========================================
+   4. PAGE DÉTAIL (CORRECTION PLEIN ÉCRAN)
+   ========================================= */
+
+/* FORCE LE MODE COLONNE UNIQUE ET SUPPRIME LE BLOC BLEU */
+#article-detail-view {
+    display: block !important; /* Annule le 'flex' qui sépare l'écran en deux */
+    width: 100%;
+    max-width: 850px; /* Centre l'article pour une lecture agréable */
+    margin: 120px auto 60px auto;
+}
+
+.article-main-col {
+    width: 100% !important;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 40px;
+}
+
+/* On s'assure que le contenu dynamique occupe toute la largeur */
+#dynamic-article-content {
+    width: 100%;
+}
+/* =========================================
+   5. ADMIN PANEL & FORMULAIRES
+   ========================================= */
+.admin-tabs { display: flex; gap: 10px; margin-bottom: 30px; }
+.tab-btn {
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: white; padding: 12px 25px; border-radius: 8px; cursor: pointer;
+}
+.tab-btn.active { background: var(--accent); border-color: var(--accent); }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+input, select, textarea {
+    width: 100%; padding: 12px; margin-bottom: 15px;
+    background: var(--bg-input); border: 1px solid var(--border);
+    color: white; border-radius: 8px; outline: none;
+}
+
+button[type="submit"] {
+    background: var(--accent); color: white; border: none;
+    padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%;
+}
+
+/* =========================================
+   6. TOASTS & MODALES
+   ========================================= */
+#toast-container { position: fixed; top: 20px; right: 20px; z-index: 5000; }
+.toast {
+    background: var(--bg-card); color: white; padding: 15px 20px;
+    border-radius: 8px; border-left: 5px solid var(--accent);
+    margin-bottom: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+    display: none; justify-content: center; align-items: center; z-index: 3000;
+}
+.modal-content {
+    background: var(--bg-card); padding: 30px; border-radius: 12px;
+    width: 90%; max-width: 500px; border: 1px solid var(--border);
+}
+
+/* =========================================
+   7. RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+    .article-main-col { padding: 20px; border-radius: 0; }
+    .detail-content h1 { font-size: 1.8rem; }
+    .slide-menu { width: 100%; right: -100%; }
+    .slide-menu.active { transform: translateX(-100%); }
+}
+
+/* L'effet coulissant pour les articles */
+.side-panel-detail {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Caché à droite */
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-dark);
+    z-index: 3000;
+    overflow-y: auto;
+    transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.side-panel-detail.active {
+    right: 0; /* Apparition par glissement */
+}
+
+.article-main-col {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}

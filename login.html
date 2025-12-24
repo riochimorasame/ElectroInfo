@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion - ElectroInfo</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hidden { display: none; }
+        .reset-box { margin-top: 15px; padding-top: 15px; border-top: 1px solid #333; }
+    </style>
+</head>
+<body>
+    <div class="container" style="max-width: 400px; margin-top: 100px; text-align:center;">
+        <a href="index.html" style="color:#64748b; font-size:0.9rem; margin-bottom:20px; display:inline-block;">← Retour à l'accueil</a>
+
+        <h1 style="color:white; margin-bottom:20px;">Electro<span class="text-cyan">Info</span></h1>
+        
+        <div style="background:var(--bg-card); padding:30px; border-radius:15px; border:1px solid var(--border);">
+            <h2 style="color:white; margin-bottom:20px;">Espace Membre</h2>
+            
+            <div id="loginSection">
+                <input type="email" id="email" placeholder="Email">
+                <input type="password" id="password" placeholder="Mot de passe">
+                
+                <button id="btnLogin" style="margin-top:10px;">Se connecter</button>
+                <button id="btnRegister" style="margin-top:10px; background:transparent; border:1px solid var(--cyan); color:var(--cyan);">Créer un compte</button>
+                
+                <p style="margin-top:15px; font-size:0.9rem; cursor:pointer; color:#94a3b8; text-decoration:underline;" onclick="toggleReset()">Mot de passe oublié ?</p>
+            </div>
+
+            <div id="resetSection" class="hidden reset-box">
+                <h4 style="color:white; margin-bottom:10px;">Réinitialisation</h4>
+                <p style="color:#aaa; font-size:0.8rem; margin-bottom:10px;">Entrez votre email pour recevoir un lien.</p>
+                <input type="email" id="resetEmail" placeholder="Votre email...">
+                <button onclick="handleReset()" style="background:#f59e0b;">Envoyer le lien</button>
+                <p style="margin-top:10px; font-size:0.8rem; cursor:pointer; color:#94a3b8;" onclick="toggleReset()">Annuler</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { loginUser, registerUser, resetPassword } from "./src/auth.js";
+        
+        // Logique Boutons Connexion
+        document.getElementById('btnLogin').addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('password').value;
+            if(email && pass) loginUser(email, pass); else alert("Remplissez tout !");
+        });
+
+        document.getElementById('btnRegister').addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('password').value;
+            if(email && pass) registerUser(email, pass); else alert("Remplissez tout !");
+        });
+
+        // Logique Réinitialisation
+        window.toggleReset = () => {
+            document.getElementById('loginSection').classList.toggle('hidden');
+            document.getElementById('resetSection').classList.toggle('hidden');
+        };
+
+        window.handleReset = () => {
+            const email = document.getElementById('resetEmail').value;
+            if(email) resetPassword(email); else alert("Entrez un email valide.");
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expertise NF C 15-100 - M. Djone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600;700&display=swap');
+
+        :root {
+            --nfc-blue: #0066ff;
+            --bg: #0a0a0c;
+        }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            color: white;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-padding {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        .choice-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .choice-card:hover { 
+            border-color: var(--nfc-blue); 
+            background: rgba(0,102,255,0.1);
+        }
+        .choice-card.correct { border-color: #22c55e; background: rgba(34,197,94,0.2); color: #4ade80; }
+        .choice-card.wrong { border-color: #ef4444; background: rgba(239,68,68,0.2); color: #f87171; }
+
+        .title-std { font-size: 3.5rem; line-height: 1.2; font-weight: 800; }
+        .desc-std { font-size: 1.25rem; line-height: 1.6; color: #94a3b8; }
+        
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            color: #60a5fa;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Fixe -->
+    <header class="sticky-header p-6 flex justify-between items-center border-b border-white/10">
+        <div class="flex items-center gap-6">
+            <div class="bg-blue-600 px-4 py-2 rounded-lg font-bold text-xl shadow-lg">NF C 15-100</div>
+            <div>
+                <h1 class="text-xl font-bold uppercase">Expertise Électrique</h1>
+                <p class="text-xs text-blue-400 font-bold uppercase tracking-widest">Monsieur Djone</p>
+            </div>
+        </div>
+        <nav class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest opacity-60">
+            <a href="#intro" class="hover:text-blue-400 transition">Intro</a>
+            <a href="#infrastructure" class="hover:text-blue-400 transition">ETEL/GTL</a>
+            <a href="#circuits" class="hover:text-blue-400 transition">Circuits</a>
+            <a href="#pieces" class="hover:text-blue-400 transition">Pièces</a>
+            <a href="#humidite" class="hover:text-blue-400 transition">Sécurité</a>
+            <a href="#quiz" class="hover:text-blue-400 transition text-blue-400">Quiz</a>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6">
+        
+        <!-- SECTION 0: Introduction -->
+        <section id="intro" class="section-padding flex flex-col items-center text-center space-y-12 border-b border-white/5">
+            <div class="w-32 h-32 border-4 border-blue-500 rounded-full flex items-center justify-center text-5xl animate-pulse shadow-[0_0_30px_rgba(0,102,255,0.3)]">⚡</div>
+            <div class="space-y-6">
+                <h2 class="title-std">LE GUIDE COMPLET</h2>
+                <p class="max-w-3xl desc-std mx-auto">
+                    Synthèse exhaustive de la norme <b>NF C 15-100</b> (amendement 5). Indispensable pour garantir la conformité du Consuel et la sécurité des occupants.
+                </p>
+            </div>
+            <div class="flex gap-4">
+                <span class="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-sm font-semibold italic">Protection contre l'incendie</span>
+                <span class="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-sm font-semibold italic">Continuité de service</span>
+            </div>
+        </section>
+
+        <!-- SECTION 1: Infrastructure (ETEL/GTL) -->
+        <section id="infrastructure" class="section-padding border-b border-white/5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <h2 class="text-4xl font-bold italic text-blue-500 uppercase tracking-tighter">I. Infrastructure & GTL</h2>
+                    <p class="desc-std">L'emplacement technique est le point névralgique de toute l'installation.</p>
+                    <div class="glass p-8 rounded-3xl space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">Largeur ETEL</span>
+                            <span class="badge">600 mm min.</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">Profondeur ETEL</span>
+                            <span class="badge">250 mm min.</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">Socles de prises GTL</span>
+                            <span class="badge">2 obligatoires (dédiés)</span>
+                        </div>
+                        <hr class="border-white/10">
+                        <p class="text-sm italic opacity-60">L'ETEL doit rester libre de tout conduit de fluide (eau, gaz) ou de source de chaleur.</p>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="w-64 h-96 border-2 border-dashed border-blue-500/30 relative flex flex-col p-6 gap-4 bg-white/5 rounded-2xl">
+                        <div class="h-12 bg-blue-600/40 rounded border border-blue-500/50 flex items-center justify-center text-[10px] font-bold">DISJONCTEUR DE BRANCHEMENT</div>
+                        <div class="flex-1 border border-white/10 rounded-xl p-3 flex flex-col gap-2">
+                            <div class="h-8 bg-white/10 rounded flex items-center justify-center text-[10px]">DIFFERENTIEL 30mA</div>
+                            <div class="flex-1 bg-white/5 rounded flex flex-col gap-1 p-2">
+                                <div class="h-1 w-full bg-blue-500/20"></div>
+                                <div class="h-1 w-full bg-blue-500/20"></div>
+                                <div class="h-1 w-full bg-blue-500/20"></div>
+                            </div>
+                        </div>
+                        <div class="h-12 bg-white/10 rounded border border-white/10 flex items-center justify-center text-[10px] font-bold">COFFRET COM (RJ45)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Les Circuits & Protections -->
+        <section id="circuits" class="section-padding border-b border-white/5">
+            <h2 class="text-4xl font-bold mb-12 text-center text-blue-400 italic">II. Circuits & Dimensionnement</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-white/20 text-blue-400 uppercase text-xs tracking-widest">
+                            <th class="py-4 px-2">Type de Circuit</th>
+                            <th class="py-4 px-2">Section Cuivre</th>
+                            <th class="py-4 px-2">Disjoncteur Max</th>
+                            <th class="py-4 px-2">Points Max</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                            <td class="py-4 px-2 font-bold italic">Éclairage</td>
+                            <td class="py-4 px-2">1.5 mm²</td>
+                            <td class="py-4 px-2">16 A</td>
+                            <td class="py-4 px-2">8 points</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                            <td class="py-4 px-2 font-bold italic">Prises (standard)</td>
+                            <td class="py-4 px-2">1.5 mm²</td>
+                            <td class="py-4 px-2">16 A</td>
+                            <td class="py-4 px-2">8 prises</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                            <td class="py-4 px-2 font-bold italic">Prises (confort)</td>
+                            <td class="py-4 px-2">2.5 mm²</td>
+                            <td class="py-4 px-2">20 A</td>
+                            <td class="py-4 px-2">12 prises</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                            <td class="py-4 px-2 font-bold italic text-orange-400">Plaques Cuisson</td>
+                            <td class="py-4 px-2">6.0 mm²</td>
+                            <td class="py-4 px-2">32 A</td>
+                            <td class="py-4 px-2">Dédié</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/5 transition">
+                            <td class="py-4 px-2 font-bold italic">Four / Lave-linge</td>
+                            <td class="py-4 px-2">2.5 mm²</td>
+                            <td class="py-4 px-2">20 A</td>
+                            <td class="py-4 px-2">Dédié</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-10 p-6 glass rounded-2xl border-l-4 border-orange-500">
+                <h4 class="text-orange-500 font-bold mb-2 uppercase text-xs">Règle des 30mA</h4>
+                <p class="text-sm opacity-80">Toute l'installation doit être protégée par au moins <b>deux interrupteurs différentiels 30mA</b>. Le type A est obligatoire pour les circuits cuisson et lave-linge.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Nombre de socles par pièce -->
+        <section id="pieces" class="section-padding border-b border-white/5">
+            <h2 class="text-4xl font-bold mb-12 text-center text-green-400 italic">III. Équipement Minimal par Pièce</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass p-6 rounded-2xl">
+                    <h3 class="font-bold text-green-400 mb-4">Cuisine</h3>
+                    <ul class="text-xs space-y-2 opacity-80">
+                        <li>• 6 prises min. (4 au dessus plan travail)</li>
+                        <li>• Circuit dédié cuisson 32A</li>
+                        <li>• 1 point lumineux</li>
+                    </ul>
+                </div>
+                <div class="glass p-6 rounded-2xl">
+                    <h3 class="font-bold text-green-400 mb-4">Séjour</h3>
+                    <ul class="text-xs space-y-2 opacity-80">
+                        <li>• 5 prises min. (si < 28m²)</li>
+                        <li>• 1 prise RJ45 (près TV)</li>
+                        <li>• 1 point lumineux</li>
+                    </ul>
+                </div>
+                <div class="glass p-6 rounded-2xl">
+                    <h3 class="font-bold text-green-400 mb-4">Chambres</h3>
+                    <ul class="text-xs space-y-2 opacity-80">
+                        <li>• 3 prises min.</li>
+                        <li>• 1 prise RJ45 (recommandé)</li>
+                        <li>• 1 point lumineux</li>
+                    </ul>
+                </div>
+                <div class="glass p-6 rounded-2xl">
+                    <h3 class="font-bold text-green-400 mb-4">Circulations</h3>
+                    <ul class="text-xs space-y-2 opacity-80">
+                        <li>• 1 prise min. (si > 4m²)</li>
+                        <li>• 1 point lumineux</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Humidité -->
+        <section id="humidite" class="section-padding border-b border-white/5 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-orange-500 uppercase italic">IV. La Salle d'Eau (Sécurité)</h2>
+            <div class="relative h-80 w-full bg-blue-900/10 rounded-[40px] border border-white/10 flex items-end justify-center overflow-hidden mb-12">
+                <div class="w-80 h-24 bg-slate-700 rounded-t-2xl relative z-20 border-t-4 border-slate-500 flex items-center justify-center">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-red-500">Vol. 0 (Immersion)</span>
+                </div>
+                <div class="absolute bottom-0 w-80 h-full bg-red-500/10 border-x border-red-500/30 z-10"></div>
+                <div class="absolute bottom-0 w-[550px] h-full border-x border-orange-500/30 bg-orange-500/5"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass p-6 rounded-2xl border-t-2 border-red-600">
+                    <h4 class="text-red-500 font-bold mb-2">Volume 0</h4>
+                    <p class="text-[10px] opacity-60">Aucun appareil. Aucun interrupteur. Seuls les luminaires IPX7 sont tolérés en fond de baignoire.</p>
+                </div>
+                <div class="glass p-6 rounded-2xl border-t-2 border-red-500">
+                    <h4 class="text-red-500 font-bold mb-2">Volume 1</h4>
+                    <p class="text-[10px] opacity-60">Matériel TBTS 12V seulement. Chauffe-eau admis si positionné au plus haut.</p>
+                </div>
+                <div class="glass p-6 rounded-2xl border-t-2 border-orange-500">
+                    <h4 class="text-orange-500 font-bold mb-2">Volume 2</h4>
+                    <p class="text-[10px] opacity-60">Rayon de 60cm. Appareils Classe II autorisés. Prise rasoir avec transfo autorisée.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Quiz -->
+        <section id="quiz" class="section-padding">
+            <div class="glass p-12 rounded-[50px] max-w-4xl mx-auto shadow-2xl">
+                <div id="quiz-header" class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-blue-400">EXAMEN FINAL</h2>
+                    <p class="text-xs opacity-50 uppercase tracking-[0.4em] mt-3 font-bold">Certification NF C 15-100</p>
+                </div>
+                
+                <div id="quiz-body" class="space-y-8">
+                    <div class="bg-white/5 p-10 rounded-3xl border border-white/10 shadow-inner">
+                        <p id="q-text" class="text-2xl font-semibold text-center leading-snug"></p>
+                    </div>
+                    <div id="q-options" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                    <div id="feedback" class="h-10 text-center font-bold text-xl transition-all duration-300"></div>
+                </div>
+
+                <div id="quiz-result" class="hidden text-center space-y-8 py-10">
+                    <div class="text-7xl">🏆</div>
+                    <h2 class="text-4xl font-bold text-blue-500">EXPERTISE VALIDÉE</h2>
+                    <p class="desc-std text-slate-300">Monsieur Djone, vous maîtrisez désormais les piliers de la norme électrique française.</p>
+                    <button onclick="resetQuiz()" class="px-10 py-3 bg-blue-600 rounded-full font-bold hover:bg-blue-700 transition-all uppercase tracking-widest text-xs">Recommencer le test</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="p-12 text-center border-t border-white/10 opacity-40 text-xs font-mono tracking-widest uppercase">
+        © 2024 • Expertise NF C 15-100 • Monsieur Djone • Sécurité Électrique
+    </footer>
+
+    <script>
+        const quizData = [
+            {
+                q: "Sur un circuit protégé par un disjoncteur 16A (1.5mm²), combien de prises sont autorisées ?",
+                o: ["Maximum 8 prises", "Maximum 12 prises", "Maximum 5 prises"],
+                a: 0
+            },
+            {
+                q: "Quel type d'interrupteur différentiel est obligatoire pour les circuits de cuisson ?",
+                o: ["Type AC", "Type A", "Type B"],
+                a: 1
+            },
+            {
+                q: "Nombre de prises minimal pour un séjour de moins de 28m² ?",
+                o: ["3 prises", "5 prises", "8 prises"],
+                a: 1
+            },
+            {
+                q: "Dans la salle de bain, quelle est la distance de protection du Volume 2 ?",
+                o: ["30 cm", "60 cm", "120 cm"],
+                a: 1
+            }
+        ];
+
+        let qIndex = 0;
+
+        function initQuiz() {
+            if(qIndex >= quizData.length) {
+                document.getElementById('quiz-body').classList.add('hidden');
+                document.getElementById('quiz-header').classList.add('hidden');
+                document.getElementById('quiz-result').classList.remove('hidden');
+                return;
+            }
+            
+            const data = quizData[qIndex];
+            document.getElementById('q-text').innerText = data.q;
+            const options = document.getElementById('q-options');
+            options.innerHTML = '';
+            
+            data.o.forEach((opt, idx) => {
+                const btn = document.createElement('div');
+                btn.className = "choice-card p-6 rounded-2xl text-center shadow-lg transition-transform hover:scale-[1.02]";
+                btn.innerText = opt;
+                btn.onclick = () => {
+                    const feedback = document.getElementById('feedback');
+                    if(idx === data.a) {
+                        btn.classList.add('correct');
+                        feedback.innerText = "✓ RÉPONSE CONFORME";
+                        feedback.className = "text-green-500 text-center font-bold text-xl mt-4 animate-pulse";
+                        setTimeout(() => { 
+                            qIndex++; 
+                            feedback.innerText = ""; 
+                            initQuiz(); 
+                        }, 1200);
+                    } else {
+                        btn.classList.add('wrong');
+                        feedback.innerText = "✗ ERREUR DE CONCEPTION";
+                        feedback.className = "text-red-500 text-center font-bold text-xl mt-4";
+                        setTimeout(() => { 
+                            btn.classList.remove('wrong'); 
+                            feedback.innerText = ""; 
+                        }, 1000);
+                    }
+                };
+                options.appendChild(btn);
+            });
+        }
+
+        function resetQuiz() {
+            qIndex = 0;
+            document.getElementById('quiz-body').classList.remove('hidden');
+            document.getElementById('quiz-header').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            initQuiz();
+        }
+
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>

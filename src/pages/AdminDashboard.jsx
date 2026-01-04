@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Book, Users, Settings, Plus, Edit2, Trash2, Save, X, Search, Eye, EyeOff, LogOut, GraduationCap } from 'lucide-react';
-import CoursesManager from './CoursesManager';
 import { saveResources, loadResources, saveCategories, loadCategories, saveUsers, loadUsers } from '../services/storageService';
+import CoursesManager from './CoursesManager';
 
 export default function AdminDashboard({ user, onLogout }) {
   const [activeTab, setActiveTab] = useState('resources');
@@ -56,7 +56,6 @@ export default function AdminDashboard({ user, onLogout }) {
 
   const [newCategory, setNewCategory] = useState('');
 
-  // Sauvegarder automatiquement les données quand elles changent
   useEffect(() => {
     saveResources(resources);
   }, [resources]);
@@ -140,7 +139,6 @@ export default function AdminDashboard({ user, onLogout }) {
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f3f4f6' }}>
-      {/* Header */}
       <div style={{ backgroundColor: '#4f46e5', color: 'white', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '16px 24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -183,16 +181,15 @@ export default function AdminDashboard({ user, onLogout }) {
         </div>
       </div>
 
-      {/* Navigation Tabs */}
       <div style={{ backgroundColor: 'white', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'flex', gap: '24px' }}>
-           {[
-  { id: 'resources', icon: Book, label: 'Ressources' },
-  { id: 'courses', icon: GraduationCap, label: 'Cours & Exercices' },
-  { id: 'users', icon: Users, label: 'Utilisateurs' },
-  { id: 'settings', icon: Settings, label: 'Paramètres' }
-].map(tab => (
+            {[
+              { id: 'resources', icon: Book, label: 'Ressources' },
+              { id: 'courses', icon: GraduationCap, label: 'Cours & Exercices' },
+              { id: 'users', icon: Users, label: 'Utilisateurs' },
+              { id: 'settings', icon: Settings, label: 'Paramètres' }
+            ].map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
@@ -217,9 +214,7 @@ export default function AdminDashboard({ user, onLogout }) {
         </div>
       </div>
 
-      {/* Main Content */}
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '24px' }}>
-        {/* Statistics Cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '24px', marginBottom: '24px' }}>
           <div style={{ backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '24px' }}>
             <p style={{ color: '#6b7280', fontSize: '14px', margin: '0 0 8px 0' }}>Ressources totales</p>
@@ -239,10 +234,8 @@ export default function AdminDashboard({ user, onLogout }) {
           </div>
         </div>
 
-        {/* Resources Tab */}
         {activeTab === 'resources' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            {/* Add Button or Form */}
             {!isEditing ? (
               <div style={{ backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '24px' }}>
                 <button
@@ -412,7 +405,6 @@ export default function AdminDashboard({ user, onLogout }) {
               </div>
             )}
 
-            {/* Search */}
             <div style={{ backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '24px' }}>
               <div style={{ position: 'relative' }}>
                 <Search style={{ position: 'absolute', left: '12px', top: '12px', color: '#9ca3af' }} size={20} />
@@ -433,7 +425,6 @@ export default function AdminDashboard({ user, onLogout }) {
               </div>
             </div>
 
-            {/* Resources Table */}
             <div style={{ backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead style={{ backgroundColor: '#f9fafb', borderBottom: '1px solid #e5e7eb' }}>
@@ -512,7 +503,10 @@ export default function AdminDashboard({ user, onLogout }) {
           </div>
         )}
 
-        {/* Users Tab */}
+        {activeTab === 'courses' && (
+          <CoursesManager />
+        )}
+
         {activeTab === 'users' && (
           <div style={{ backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
             <div style={{ padding: '24px', borderBottom: '1px solid #e5e7eb' }}>
@@ -563,7 +557,6 @@ export default function AdminDashboard({ user, onLogout }) {
           </div>
         )}
 
-        {/* Settings Tab */}
         {activeTab === 'settings' && (
           <div style={{ backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '24px' }}>
             <h2 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '24px', color: '#1f2937' }}>Gestion des catégories</h2>

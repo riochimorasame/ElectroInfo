@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpen, Plus, Edit2, Trash2, Save, X, Upload, FileText, ExternalLink, Eye } from 'lucide-react';
+import { BookOpen, Plus, Edit2, Trash2, Save, X, Upload, FileText } from 'lucide-react';
 import { saveCourses, loadCourses, fileToBase64 } from '../services/storageService';
 
 export default function CoursesManager() {
@@ -119,8 +119,8 @@ export default function CoursesManager() {
   };
 
   return (
-    <div style={{ padding: '24px' }}>
-      <div style={{ marginBottom: '32px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      <div>
         <h1 style={{ fontSize: '28px', fontWeight: '700', color: '#1f2937', margin: '0 0 8px 0' }}>
           Gestion des Cours & Exercices
         </h1>
@@ -129,9 +129,8 @@ export default function CoursesManager() {
         </p>
       </div>
 
-      {/* Bouton Ajouter */}
       {!isEditing ? (
-        <div style={{ marginBottom: '32px' }}>
+        <div style={{ backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', padding: '24px' }}>
           <button
             onClick={() => setIsEditing(true)}
             style={{
@@ -154,20 +153,17 @@ export default function CoursesManager() {
           </button>
         </div>
       ) : (
-        /* Formulaire */
         <div style={{
           backgroundColor: 'white',
           borderRadius: '16px',
           boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-          padding: '32px',
-          marginBottom: '32px'
+          padding: '32px'
         }}>
           <h2 style={{ fontSize: '22px', fontWeight: '700', marginBottom: '24px', color: '#1f2937' }}>
             {editingId ? 'Modifier le cours' : 'Nouveau cours'}
           </h2>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            {/* Titre */}
             <div>
               <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
                 Titre du cours *
@@ -188,7 +184,6 @@ export default function CoursesManager() {
               />
             </div>
 
-            {/* Catégorie et Niveau */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
               <div>
                 <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
@@ -233,7 +228,6 @@ export default function CoursesManager() {
               </div>
             </div>
 
-            {/* Description */}
             <div>
               <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
                 Description *
@@ -254,7 +248,6 @@ export default function CoursesManager() {
               />
             </div>
 
-            {/* PDF du cours */}
             <div>
               <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
                 📄 PDF du cours
@@ -287,7 +280,7 @@ export default function CoursesManager() {
                     </button>
                   </div>
                 ) : (
-                  <>
+                  <div>
                     <Upload size={40} color="#9ca3af" style={{ margin: '0 auto 12px' }} />
                     <input
                       type="file"
@@ -310,12 +303,11 @@ export default function CoursesManager() {
                     >
                       Choisir un PDF
                     </label>
-                  </>
+                  </div>
                 )}
               </div>
             </div>
 
-            {/* Lien "Plus d'explications" */}
             <div>
               <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
                 🔗 Lien "Plus d'explications" (optionnel)
@@ -335,7 +327,6 @@ export default function CoursesManager() {
               />
             </div>
 
-            {/* PDF des exercices */}
             <div>
               <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
                 ✏️ PDF des exercices (optionnel)
@@ -368,7 +359,7 @@ export default function CoursesManager() {
                     </button>
                   </div>
                 ) : (
-                  <>
+                  <div>
                     <Upload size={40} color="#9ca3af" style={{ margin: '0 auto 12px' }} />
                     <input
                       type="file"
@@ -391,12 +382,11 @@ export default function CoursesManager() {
                     >
                       Choisir un PDF
                     </label>
-                  </>
+                  </div>
                 )}
               </div>
             </div>
 
-            {/* Lien "Exercice visuel" */}
             <div>
               <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
                 🎯 Lien "Exercice visuel" (optionnel)
@@ -416,7 +406,6 @@ export default function CoursesManager() {
               />
             </div>
 
-            {/* Visibilité */}
             <div>
               <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
                 Visibilité
@@ -437,7 +426,6 @@ export default function CoursesManager() {
               </select>
             </div>
 
-            {/* Boutons */}
             <div style={{ display: 'flex', gap: '12px', paddingTop: '16px' }}>
               <button
                 onClick={handleSubmit}
@@ -479,7 +467,6 @@ export default function CoursesManager() {
         </div>
       )}
 
-      {/* Liste des cours */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '24px' }}>
         {courses.map(course => (
           <div
